@@ -108,7 +108,30 @@ function SettingStack() {
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === 'Home') {
+              iconName = focused
+                ? require('./assets/home-black.png')
+                : require('./assets/home.png');
+            } else if (route.name === 'Setting') {
+              iconName = focused 
+              ? require('./assets/setting-black.png') 
+              : require('./assets/setting.png');
+            }
+
+            // You can return any component that you like here!
+            return <Image source={iconName} style={{width: 20, height: 20}} resizeMode="contain" />;
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: 'black',
+          inactiveTintColor: 'black',
+        }}
+      >
         <Tab.Screen name="Home" component={HomeStack} />
         <Tab.Screen name="Setting" component={SettingStack} />
       </Tab.Navigator>
