@@ -77,28 +77,31 @@ function SettingScreenDetail({navigation}) {
   );
 }
 
-const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator();
 
 const navOptionHandler = () => ({
   headerShown: false
 })
 
+const StackHome = createStackNavigator()
+
 function HomeStack() {
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={HomeScreen} options={navOptionHandler}/>
-      <Stack.Screen name="HomeDetail" component={HomeScreenDetail} options={navOptionHandler}/>
-    </Stack.Navigator>
+    <StackHome.Navigator initialRouteName="Home">
+      <StackHome.Screen name="Home" component={HomeScreen} options={navOptionHandler}/>
+      <StackHome.Screen name="HomeDetail" component={HomeScreenDetail} options={navOptionHandler}/>
+    </StackHome.Navigator>
   )
 }
 
+const StackSetting = createStackNavigator()
+
 function SettingStack() {
   return (
-    <Stack.Navigator initialRouteName="Setting">
-      <Stack.Screen name="Settin" component={SettingScreen} options={navOptionHandler}/>
-      <Stack.Screen name="SettingDetail" component={SettingScreenDetail} options={navOptionHandler}/>
-    </Stack.Navigator>
+    <StackSetting.Navigator initialRouteName="Setting">
+      <StackSetting.Screen name="Settin" component={SettingScreen} options={navOptionHandler}/>
+      <StackSetting.Screen name="SettingDetail" component={SettingScreenDetail} options={navOptionHandler}/>
+    </StackSetting.Navigator>
   )
 }
 
