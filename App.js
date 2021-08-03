@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Text, View, SafeAreaView, Image, TouchableOpacity } from 'react-native';
+import { Text, View, SafeAreaView, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 function CustomHeader({title, isHome, navigation}) {
   return (
@@ -10,7 +11,9 @@ function CustomHeader({title, isHome, navigation}) {
       <View style={{flex: 1, justifyContent: 'center'}}>
         {
           isHome ?
-          <Image style={{width: 30, height: 30, marginLeft: 7}} source={require('./assets/menu.png')} resizeMode="contain" />
+          <TouchableOpacity onPress={() => navigation.openDrawer()}>
+            <Image style={{width: 30, height: 30, marginLeft: 7}} source={require('./assets/menu.png')} resizeMode="contain" />
+          </TouchableOpacity>
           : 
           <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}} onPress={() => navigation.goBack()}>
             <Image style={{width: 20, height: 20, marginLeft: 5}} source={require('./assets/left-arrow.png')} resizeMode="contain" />
@@ -55,7 +58,7 @@ function HomeScreenDetail({navigation}) {
 function SettingScreen({navigation}) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <CustomHeader title="Setting" isHome={true}/>
+      <CustomHeader title="Setting" isHome={true} navigation={navigation}/>
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>Setting!</Text>
         <TouchableOpacity style={{marginTop: 20}} onPress={() => navigation.navigate('SettingDetail')}>
@@ -75,6 +78,35 @@ function SettingScreenDetail({navigation}) {
       </View>
     </SafeAreaView>
   );
+}
+
+function NotificationsScreen({ navigation }) {
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <CustomHeader title="Notifications" navigation={navigation}/>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Notifications Screen!</Text>
+      </View>
+    </SafeAreaView>
+  );
+}
+
+function CustomDrawerContent(props) {
+  return (
+    <SafeAreaView style={{flex: 1}}>
+      <View style={{height: 150, alignItems: 'center', justifyContent: 'center'}}>
+        <Image source={require('./assets/profile.png')} style={{height: 120, width: 120, borderRadius: 60}}/>
+      </View>
+      <ScrollView style={{marginLeft: 10}}>
+        <TouchableOpacity style={{marginTop: 20}} onPress={() => props.navigation.navigate('MenuTab')}>
+          <Text>Menu Tab</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{marginTop: 20}} onPress={() => props.navigation.navigate('Notifications')}>
+          <Text>Notifications</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </SafeAreaView>
+  )
 }
 
 const Tab = createBottomTabNavigator();
@@ -105,10 +137,9 @@ function SettingStack() {
   )
 }
 
-export default function App() {
+function TabNavigator() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
+    <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -135,6 +166,19 @@ export default function App() {
         <Tab.Screen name="Home" component={HomeStack} />
         <Tab.Screen name="Setting" component={SettingStack} />
       </Tab.Navigator>
+  )
+}
+
+const Drawer = createDrawerNavigator();
+
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="MenuTab" drawerContent={props => CustomDrawerContent(props)}>
+        <Drawer.Screen name="MenuTab" component={TabNavigator} />
+        <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
