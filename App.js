@@ -172,6 +172,12 @@ function CustomDrawerContent(props) {
           <Text>Notifications</Text>
         </TouchableOpacity>
       </ScrollView>
+      <TouchableOpacity
+        style={{ marginTop: 20, margin: 10 }}
+        onPress={() => props.navigation.navigate("Login")}
+      >
+        <Text>Logout</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
