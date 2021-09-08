@@ -51,13 +51,22 @@ function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CustomHeader title="Home" isHome={true} navigation={navigation} />
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Home!</Text>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#b3e5fc",
+        }}
+      >
+        <Text style={{ fontSize: 50 }}>Home :)</Text>
         <TouchableOpacity
-          style={{ marginTop: 20 }}
+          style={{ marginTop: 100 }}
           onPress={() => navigation.navigate("HomeDetail")}
         >
-          <Text>Go Home Detail</Text>
+          <Text style={{ color: "red", fontSize: 20 }}>
+            Home Detail 로 가기
+          </Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -68,8 +77,15 @@ function HomeScreenDetail({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CustomHeader title="Home Detail" navigation={navigation} />
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Home Detail!</Text>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#ccff90",
+        }}
+      >
+        <Text style={{ fontSize: 50 }}>Home Detail :)</Text>
       </View>
     </SafeAreaView>
   );
@@ -79,13 +95,22 @@ function SettingScreen({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CustomHeader title="Setting" isHome={true} navigation={navigation} />
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Setting!</Text>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#f8bbd0",
+        }}
+      >
+        <Text style={{ fontSize: 50 }}>Setting :)</Text>
         <TouchableOpacity
-          style={{ marginTop: 20 }}
+          style={{ marginTop: 100 }}
           onPress={() => navigation.navigate("SettingDetail")}
         >
-          <Text>Go Setting Detail</Text>
+          <Text style={{ color: "red", fontSize: 20 }}>
+            Setting Detail 로 가기
+          </Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -96,8 +121,15 @@ function SettingScreenDetail({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CustomHeader title="Setting Detail" navigation={navigation} />
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Setting Detail!</Text>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#ffff8d",
+        }}
+      >
+        <Text style={{ fontSize: 50 }}>Setting Detail :)</Text>
       </View>
     </SafeAreaView>
   );
@@ -107,8 +139,15 @@ function NotificationsScreen({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CustomHeader title="Notifications" navigation={navigation} />
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Notifications Screen!</Text>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#a7ffeb",
+        }}
+      >
+        <Text style={{ fontSize: 50 }}>Notifications :)</Text>
       </View>
     </SafeAreaView>
   );
@@ -118,8 +157,15 @@ function RegisterScreen({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CustomHeader title="Register" navigation={navigation} />
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Register Screen!</Text>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#ffe0b2",
+        }}
+      >
+        <Text style={{ fontSize: 50 }}>Register :)</Text>
       </View>
     </SafeAreaView>
   );
@@ -128,19 +174,26 @@ function RegisterScreen({ navigation }) {
 function LoginScreen({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Login Screen!</Text>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#e6ceff",
+        }}
+      >
+        <Text style={{ fontSize: 50 }}>WELCOME :)</Text>
         <TouchableOpacity
-          style={{ marginTop: 20 }}
+          style={{ marginTop: 100 }}
           onPress={() => navigation.navigate("HomeApp")}
         >
-          <Text>Login</Text>
+          <Text style={{ fontSize: 30, color: "blue" }}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={{ marginTop: 20 }}
+          style={{ marginTop: 30 }}
           onPress={() => navigation.navigate("Register")}
         >
-          <Text>Resigter</Text>
+          <Text style={{ fontSize: 30, color: "red" }}>Resigter</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -158,25 +211,25 @@ function CustomDrawerContent(props) {
           style={{ height: 120, width: 120, borderRadius: 60 }}
         />
       </View>
-      <ScrollView style={{ marginLeft: 10 }}>
+      <ScrollView style={{ margin: 20 }}>
         <TouchableOpacity
           style={{ marginTop: 20 }}
           onPress={() => props.navigation.navigate("MenuTab")}
         >
-          <Text>Menu Tab</Text>
+          <Text style={{ fontSize: 20 }}>* Menu Tab *</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{ marginTop: 20 }}
           onPress={() => props.navigation.navigate("Notifications")}
         >
-          <Text>Notifications</Text>
+          <Text style={{ fontSize: 20 }}>Notifications</Text>
         </TouchableOpacity>
       </ScrollView>
       <TouchableOpacity
-        style={{ marginTop: 20, margin: 10 }}
+        style={{ margin: 20 }}
         onPress={() => props.navigation.navigate("Login")}
       >
-        <Text>Logout</Text>
+        <Text style={{ color: "red" }}>Logout</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
