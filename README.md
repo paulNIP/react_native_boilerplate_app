@@ -6,39 +6,39 @@ React Navigation Mix Study :)
 
 ### 첫 화면
 
-<img scr="https://user-images.githubusercontent.com/63582123/132478184-d71f3169-d114-47ae-a2b5-ffecd1634ca4.jpeg" width="347" height="599">
+<img src="https://user-images.githubusercontent.com/63582123/132478184-d71f3169-d114-47ae-a2b5-ffecd1634ca4.jpeg" width="347" height="599">
 
 ### Register 버튼을 누른 화면
 
-<img scr="https://user-images.githubusercontent.com/63582123/132478193-6583e850-d34a-4313-a4e3-a4001780f771.jpeg" width="347" height="599">
+<img src="https://user-images.githubusercontent.com/63582123/132478193-6583e850-d34a-4313-a4e3-a4001780f771.jpeg" width="347" height="599">
 
 ### Login 버튼을 누른 화면, Home 화면
 
-<img scr="https://user-images.githubusercontent.com/63582123/132478196-a30fa137-e77f-4cfc-8183-6649e3ea88ae.jpeg" width="347" height="599">
+<img src="https://user-images.githubusercontent.com/63582123/132478196-a30fa137-e77f-4cfc-8183-6649e3ea88ae.jpeg" width="347" height="599">
 
 ### Home Detail 버튼을 누른 화면
 
-<img scr="https://user-images.githubusercontent.com/63582123/132478200-138d3ee4-ce91-4900-8691-0fd1eed12924.jpeg" width="347" height="599">
+<img src="https://user-images.githubusercontent.com/63582123/132478200-138d3ee4-ce91-4900-8691-0fd1eed12924.jpeg" width="347" height="599">
 
 ### Setting 화면
 
-<img scr="https://user-images.githubusercontent.com/63582123/132478205-228d34e0-3fb8-4fba-b599-4b9ba3d69fe5.jpeg" width="347" height="599">
+<img src="https://user-images.githubusercontent.com/63582123/132478205-228d34e0-3fb8-4fba-b599-4b9ba3d69fe5.jpeg" width="347" height="599">
 
 ### Setting Detail 버튼을 누른 화면
 
-<img scr="https://user-images.githubusercontent.com/63582123/132478214-4ae841ae-dea6-465f-b41d-dae3a9335b70.jpeg" width="347" height="599">
+<img src="https://user-images.githubusercontent.com/63582123/132478214-4ae841ae-dea6-465f-b41d-dae3a9335b70.jpeg" width="347" height="599">
 
 ### 메뉴 바 화면
 
-<img scr="https://user-images.githubusercontent.com/63582123/132478231-8e2e4605-0326-4441-aff7-8e5995dc31be.jpeg" width="347" height="599">
+<img src="https://user-images.githubusercontent.com/63582123/132478231-8e2e4605-0326-4441-aff7-8e5995dc31be.jpeg" width="347" height="599">
 
 ### Nomtifications 버튼을 누른 화면
 
-<img scr="https://user-images.githubusercontent.com/63582123/132478240-613a6746-231d-417b-b8bb-90a88f1b8eae.jpeg" width="347" height="599">
+<img src="https://user-images.githubusercontent.com/63582123/132478240-613a6746-231d-417b-b8bb-90a88f1b8eae.jpeg" width="347" height="599">
 
 ### Logout 버튼을 누른 화면, 첫 화면
 
-<img scr="https://user-images.githubusercontent.com/63582123/132478184-d71f3169-d114-47ae-a2b5-ffecd1634ca4.jpeg" width="347" height="599">
+<img src="https://user-images.githubusercontent.com/63582123/132478184-d71f3169-d114-47ae-a2b5-ffecd1634ca4.jpeg" width="347" height="599">
 
 ## Installation
 
