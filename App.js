@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import {
   Text,
   View,
@@ -6,11 +6,16 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  StyleSheet,
+  Button
 } from "react-native";
+import {useState} from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import AppIntroSlider from 'react-native-app-intro-slider';
+import { withSafeAreaInsets } from "react-native-safe-area-context";
 
 function CustomHeader({ title, isHome, navigation }) {
   return (
@@ -195,6 +200,9 @@ function LoginScreen({ navigation }) {
         >
           <Text style={{ fontSize: 30, color: "red" }}>Resigter</Text>
         </TouchableOpacity>
+        <Button title="Shoe app Intro Slider again"
+          onPress={()=>setShowRealApp(false)}
+        />
       </View>
     </SafeAreaView>
   );
@@ -266,7 +274,7 @@ function SettingStack() {
   return (
     <StackSetting.Navigator initialRouteName="Setting">
       <StackSetting.Screen
-        name="Settin"
+        name="Setting"
         component={SettingScreen}
         options={navOptionHandler}
       />
@@ -333,26 +341,180 @@ function DrawerNavigator() {
 
 const StackApp = createStackNavigator();
 
-export default function App() {
+const slides = [
+  {
+    key: 's1',
+    text: 'Best Recharge offers',
+    title: 'Mobile Recharge',
+    image: {
+      uri:
+        'https://raw.githubusercontent.com/tranhonghan/images/main/intro_mobile_recharge.png',
+    },
+    backgroundColor: '#20d2bb',
+  },
+  {
+    key: 's2',
+    title: 'Flight Booking',
+    text: 'Upto 25% off on Domestic Flights',
+    image: {
+      uri:
+        'https://raw.githubusercontent.com/tranhonghan/images/main/intro_flight_ticket_booking.png',
+    },
+    backgroundColor: '#febe29',
+  },
+  {
+    key: 's3',
+    title: 'Great Offers',
+    text: 'Enjoy Great offers on our all services',
+    image: {
+      uri:
+        'https://raw.githubusercontent.com/tranhonghan/images/main/intro_discount.png',
+    },
+    backgroundColor: '#22bcb5',
+  },
+  {
+    key: 's4',
+    title: 'Best Deals',
+    text: ' Best Deals on all our services',
+    image: {
+      uri:
+        'https://raw.githubusercontent.com/tranhonghan/images/main/intro_best_deals.png',
+    },
+    backgroundColor: '#3395ff',
+  },
+  {
+    key: 's5',
+    title: 'Bus Booking',
+    text: 'Enjoy Travelling on Bus with flat 100% off',
+    image: {
+      uri:
+        'https://raw.githubusercontent.com/tranhonghan/images/main/intro_bus_ticket_booking.png',
+    },
+    backgroundColor: '#f6437b',
+  },
+  {
+    key: 's6',
+    title: 'Train Booking',
+    text: ' 10% off on first Train booking',
+    image: {
+      uri:
+        'https://raw.githubusercontent.com/tranhonghan/images/main/intro_train_ticket_booking.png',
+    },
+    backgroundColor: '#febe29',
+  },
+];
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    padding: 10,
+    justifyContent: 'center',
+  },
+  titleStyle: {
+    padding: 10,
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  introImageStyle:{
+    width: 200,
+    height: 200
+  },
+  introTitleStyle: {
+    fontSize: 25,
+    color: 'white',
+    textAlign: 'center',
+    marginBottom: 16,
+    fontWeight: 'bold'
+
+
+  },
+  introTextStyle: {
+    fontSize: 18,
+    color: 'white',
+    textAlign: 'center',
+    paddingVertical: 30
+
+
+  }
+});
+
+const App = () => {
+
+  const [showRealApp, setShowRealApp] = useState(false)
+  const onDone=() =>{
+    setShowRealApp(true)
+  }
+
+  const onSkip =()=>{
+    setShowRealApp(true)
+  }
+
+  const renderItem=({item})=>{
+    return (
+      <View 
+      style={{flex:1,
+      backgroundColor: item.backgroundColor,
+      alignItems: 'center',
+      justifyContent: 'space-around',
+      paddingBottom: 100 }}>
+        <Text style={styles.introTitleStyle}>
+          {item.title}
+        </Text>
+        <Image style={styles.introImageStyle}
+        source={item.image}/>
+        <Text style={styles.introTextStyle}>
+          {item.title}
+        </Text>
+      </View>
+    );
+
+  }
+
+
   return (
-    <NavigationContainer>
-      <StackApp.Navigator initialRouteName="Login">
-        <StackApp.Screen
-          name="HomeApp"
-          component={DrawerNavigator}
-          options={navOptionHandler}
+    <>
+      { showRealApp ? 
+      (
+        <NavigationContainer>
+        <StackApp.Navigator initialRouteName="Login">
+          <StackApp.Screen
+            name="HomeApp"
+            component={DrawerNavigator}
+            options={navOptionHandler}
+          />
+          <StackApp.Screen
+            name="Login"
+            component={LoginScreen}
+            options={navOptionHandler}
+          />
+          <StackApp.Screen
+            name="Register"
+            component={RegisterScreen}
+            options={navOptionHandler}
+          />
+        </StackApp.Navigator>
+      </NavigationContainer>
+
+      ) : 
+      (
+        <AppIntroSlider
+          data={slides}
+          renderItem={renderItem}
+          onDone={onDone}
+          onSkip={onSkip}
+          showSkipButton={true}
+          // bottomButton
         />
-        <StackApp.Screen
-          name="Login"
-          component={LoginScreen}
-          options={navOptionHandler}
-        />
-        <StackApp.Screen
-          name="Register"
-          component={RegisterScreen}
-          options={navOptionHandler}
-        />
-      </StackApp.Navigator>
-    </NavigationContainer>
+
+      )
+      
+      }
+    </>
+    
   );
-}
+};
+
+export default App;
